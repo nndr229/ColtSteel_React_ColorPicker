@@ -1,0 +1,76 @@
+import React, { Component } from "react";
+import { ChromePicker } from "react-color";
+import Button from "@material-ui/core/Button";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
+export default class ColorPickerForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { currentColor: "teal", newColorName: "" };
+	}
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value,
+		});
+	};
+	componentDidMount() {
+		ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
+			return this.props.colors.every(
+				(color) => color.name.toLowerCase() !== value.toLowerCase()
+			);
+		});
+		ValidatorForm.addValidationRule("isColorValueUnique", (value) => {
+			return this.props.colors.every(
+				(color) => color.color !== this.state.currentColor
+			);
+		});
+	}
+	updateCurrentColor = (newColor) => {
+		this.setState({ currentColor: newColor.hex });
+	};
+	render() {
+		const { colors, maxColors, addNewColor} = this.props;
+		return (
+			<div>
+				<ChromePicker
+					color={this.state.currentColor}
+					onChangeComplete={this.updateCurrentColor}
+				/>
+				<ValidatorForm
+					onSubmit={() => {
+						return [addNewColor(
+							this.state.newColorName,
+							this.state.currentColor
+						), this.setState({newColorName:""}) ]
+					}}
+				>
+					<TextValidator
+						value={this.state.newColorName}
+						name='newColorName'
+						onChange={this.handleChange}
+						validators={["required", "isColorNameUnique", "isColorValueUnique"]}
+						errorMessages={[
+							"Enter a color name",
+							"Color Name must be unique!",
+							"Color already used!",
+						]}
+					/>
+					<Button
+						type='submit'
+						variant='contained'
+						color='primary'
+						style={{
+							backgroundColor:
+								colors.length >= maxColors
+									? "#BCC2BC"
+									: this.state.currentColor,
+						}}
+						disabled={colors.length >= maxColors}
+					>
+						{colors.length >= maxColors ? "Palette Full" : "Add New Color"}
+					</Button>
+				</ValidatorForm>
+			</div>
+		);
+	}
+}
