@@ -6,7 +6,7 @@ export default {
 		margin: "0 auto",
 		display: "inline-block",
 		position: "relative",
-		marginBottom: "-4.5px",
+		marginBottom: "-5.2px",
 		"&:hover button": {
 			opacity: "1",
 			transition: "0.5s",

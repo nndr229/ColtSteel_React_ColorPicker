@@ -44,7 +44,12 @@ class ColorBox extends Component {
 
 				<div className='copy-container'>
 					<div className={classes.boxContent}>
-						<span className={classes.colorBoxName}>{name}</span>
+						<span
+							className={classes.colorBoxName}
+							style={{ wordBreak: "break-all", width: "80%" }}
+						>
+							{name}
+						</span>
 					</div>
 					<CopyToClipboard text={background} onCopy={this.changeCopyState}>
 						<button className={`${classes.copyButton}`}>Copy!</button>
