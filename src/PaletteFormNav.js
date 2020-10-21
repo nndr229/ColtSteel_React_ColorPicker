@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import PaletteMetaForm from "./PaletteMetaForm";
 
 const drawerWidth = 380;
 
@@ -40,9 +41,10 @@ const styles = (theme) => ({
 	navBtns: {
 		display: "flex",
 		flexDirection: "row",
-		justifyContent: "center",
+		justifyContent: "space-between",
 		alignItems: "center",
 		marginRight: "15px",
+		
 
 		"& a": {
 			textDecoration: "none",
@@ -53,20 +55,10 @@ const styles = (theme) => ({
 class PaletteFormNav extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { newPaletteName: "", open: false };
+		this.state = {  open: false };
 	}
-	componentDidMount() {
-		ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
-			return this.props.palettes.every(
-				(palette) => palette.paletteName.toLowerCase() !== value.toLowerCase()
-			);
-		});
-	}
-	handleChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value,
-		});
-	};
+	
+
 	render() {
 		const { open, classes, handleDrawerOpen, savePalette } = this.props;
 		const { newPaletteName } = this.state;
@@ -95,42 +87,8 @@ class PaletteFormNav extends Component {
 						</Typography>
 					</Toolbar>
 					<div className={classes.navBtns}>
-						<ValidatorForm
-							onSubmit={() => savePalette(newPaletteName)}
-							style={{
-								display: "flex",
-								flexDirection: "row",
-								marginRight: "10px",
-							}}
-						>
-							<TextValidator
-								style={{ marginRight: "15px" }}
-								variant='filled'
-								name='newPaletteName'
-								onChange={this.handleChange}
-								label='New Palette Name'
-								value={newPaletteName}
-								validators={["required", "isPaletteNameUnique"]}
-								errorMessages={["Enter a Palette name", "Name already used!"]}
-							/>
-							<div
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									justifyContent: "center",
-									alignItems: "center",
-								}}
-							>
-								<Button
-									variant='contained'
-									size='small'
-									color='primary'
-									type='submit'
-								>
-									Save Palette
-								</Button>
-							</div>
-						</ValidatorForm>
+						<PaletteMetaForm savePalette={savePalette} palettes={this.props.palettes}/>
+			
 						<Link to='/'>
 							<Button variant='contained' size='small' color='secondary'>
 								Go Back
