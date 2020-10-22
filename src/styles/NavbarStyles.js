@@ -1,3 +1,4 @@
+import sizes from "./sizes";
 export default {
 	Navbar: {
 		display: "flex",
@@ -17,9 +18,16 @@ export default {
 			textDecoration: "none",
 			color: "black",
 		},
+		[sizes.down("xs")]: {
+			width: "100px",
+			wordBreak: "break-all",
+		},
 	},
 	slider: {
 		width: "250px",
+		[sizes.down("xs")]: {
+			width: "120px",
+		},
 		margin: "auto 10px auto 10px",
 		display: "inline-block",
 		"& .rc-slider-rail": {
@@ -41,5 +49,10 @@ export default {
 	selectContainer: {
 		marginLeft: "auto",
 		marginRight: "10px",
+		[sizes.down("xs")]: {
+			width: "70px",
+			marginLeft: "auto",
+			marginRight: "40px",
+		},
 	},
 };

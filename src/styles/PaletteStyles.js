@@ -1,3 +1,4 @@
+import sizes from "./sizes"
 export default  {
 	Palette: {
 		height: "100vh",
@@ -10,6 +11,20 @@ export default  {
 	goBack:{
 		backgroundColor: 'black',
 		position: 'relative',
+		
+		[sizes.down("lg")]:{
+			width:"33.333%",
+			height: '50.0%',
+		},
+		[sizes.down("md")]:{
+			width:"50%",
+			height: '50%',
+		},
+		[sizes.down("xs")]:{
+			width:"100%",
+			height: '15%',
+			// height:props =>(props.showingFullPalette ? "8%" : "15%")
+		},
 		width: '20%',
 		height: '50%',
 		margin: '0 auto',

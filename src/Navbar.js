@@ -31,7 +31,7 @@ import styles from "./styles/NavbarStyles";
 		return (
 			<header className={classes.Navbar}>
 				<div className={classes.logo}>
-					<Link to='/'>ReactColorPicker</Link>
+					<Link to='/'>React Color Picker</Link>
 				</div>
 				{showingAllColors && (
 					<div >

@@ -13,6 +13,10 @@ class PaletteList extends Component {
 	goToPalette(id) {
 		this.props.history.push(`/palette/${id}`);
 	}
+	handleDeleteClick = (e,id) =>{
+		e.stopPropagation();
+		this.props.deletePalette(id)
+	}
 	render() {
 		const { palettes, classes } = this.props;
 
@@ -28,6 +32,7 @@ class PaletteList extends Component {
 							return (
 								<MiniPalette
 									{...palette}
+									handleDeleteClick = {this.handleDeleteClick}
 									handleClick={() => this.goToPalette(palette.id)}
 								/>
 							);

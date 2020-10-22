@@ -46,7 +46,7 @@ class ColorBox extends Component {
 					<div className={classes.boxContent}>
 						<span
 							className={classes.colorBoxName}
-							style={{ wordBreak: "break-all", width: "80%" }}
+							
 						>
 							{name}
 						</span>

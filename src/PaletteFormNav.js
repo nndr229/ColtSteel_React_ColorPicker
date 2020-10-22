@@ -40,7 +40,7 @@ class PaletteFormNav extends Component {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Typography variant='h6' noWrap>
+						<Typography variant='h6' Wrap className={classes.navHeaderText}>
 							Create New Palette
 						</Typography>
 					</Toolbar>

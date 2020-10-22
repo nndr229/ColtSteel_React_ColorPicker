@@ -9,13 +9,31 @@ export default {
 		"&:hover": {
 			cursor: "pointer",
 		},
+		"&:hover svg": {
+			width:"25px",
+			cursor: "pointer",
+		},
 	},
+
 	colors: {
 		backgroundColor: "#dae1e4",
 		borderRadius: "5px",
 		height: "130px",
 		width: "100%",
 		overflow: "hidden",
+		zIndex: "0",
+		
+	},
+	deleteIcon: {
+		width:"0",
+		zIndex: "29",
+		position: "absolute",
+		transition: "all 0.3s ease-in-out",
+		color:"white",
+		// border:"1px solid red",
+		background:"red",
+		borderRadius:"4px",
+		// alignSelf: "flex-end",
 	},
 	title: {
 		display: "flex",

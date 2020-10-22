@@ -1,4 +1,6 @@
 import chroma from "chroma-js";
+import sizes from "./sizes";
+
 export default {
 	colorBox: {
 		width: "20%",
@@ -11,16 +13,28 @@ export default {
 			opacity: "1",
 			transition: "0.5s",
 		},
+		[sizes.down("lg")]: {
+			width: "33.333%",
+		},
+		[sizes.down("md")]: {
+			width: "50%",
+		},
+		[sizes.down("xs")]: {
+			width: "100%",
+			height: (props) => (props.showingFullPalette ? "8%" : "15%"),
+		},
+
 	},
 	colorBoxName: {
 		color: (props) =>
-            chroma(props.background).luminance() <= 0.5 ? "white" : "black",
-        fontWeight:"bold",
-        fontSize:"11px"    
+			chroma(props.background).luminance() <= 0.5 ? "white" : "black",
+		fontWeight: "bold",
+		fontSize: "11px",
+		wordBreak: "break-all",
 	},
 	seeMore: {
 		color: (props) =>
-        chroma(props.background).luminance() <= 0.5 ? "white" : "black",
+			chroma(props.background).luminance() <= 0.5 ? "white" : "black",
 		background: "rgba(255, 255, 255, 0.3)",
 		position: "absolute",
 		border: "none",
@@ -34,7 +48,7 @@ export default {
 	},
 	copyButton: {
 		color: (props) =>
-        chroma(props.background).luminance() <= 0.5 ? "white" : "black",
+			chroma(props.background).luminance() <= 0.5 ? "white" : "black",
 		cursor: "pointer",
 		width: "80px",
 		height: "25px",
@@ -107,10 +121,13 @@ export default {
 			textShadow: "1px 2px black",
 			background: "rgba(255, 255, 255, 0.2)",
 			textTransform: "uppercase",
+			[sizes.down("xs")]: {
+				fontSize: "5rem",
+			},
 		},
 		"& p": {
 			color: (props) =>
-            chroma(props.background).luminance() <= 0.5 ? "white" : "black",
+				chroma(props.background).luminance() <= 0.5 ? "white" : "black",
 			fontSize: "2.6rem",
 			fontWeight: "100",
 			opacity: "0.9",

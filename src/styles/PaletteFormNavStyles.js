@@ -1,5 +1,7 @@
 import { DRAWER_WIDTH } from "../constants";
+import sizes from "./sizes"
 const drawerWidth = DRAWER_WIDTH
+
 
 export default (theme) => ({
 	root: {
@@ -27,6 +29,13 @@ export default (theme) => ({
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
+	},
+	navHeaderText:{
+		[sizes.down("xs")]: {
+			width: "100px",
+			wordWrap: "wrap",
+			lineHeight:"21px",
+		},
 	},
 	navBtns: {
 		display: "flex",
