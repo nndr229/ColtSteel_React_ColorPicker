@@ -36,7 +36,7 @@ class ColorPickerForm extends Component {
 			<div>
 				<ChromePicker
 					color={this.state.currentColor}
-					onChangeComplete={this.updateCurrentColor}
+					onChange={this.updateCurrentColor}
 					className={classes.picker}
 				/>
 				<ValidatorForm

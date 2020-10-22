@@ -6,11 +6,12 @@ export default {
 		padding: "0.5rem",
 		position: "relative",
 		overflow: "hidden",
+		marginBottom:"2px",
 		"&:hover": {
 			cursor: "pointer",
 		},
 		"&:hover svg": {
-			width:"25px",
+			width:"27px",
 			cursor: "pointer",
 		},
 	},

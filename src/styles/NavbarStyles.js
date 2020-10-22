@@ -19,8 +19,9 @@ export default {
 			color: "black",
 		},
 		[sizes.down("xs")]: {
-			width: "100px",
-			wordBreak: "break-all",
+			// display:"none",
+			width: "110px",
+			wordWrap: "wrap",
 		},
 	},
 	slider: {

@@ -32,9 +32,10 @@ export default (theme) => ({
 	},
 	navHeaderText:{
 		[sizes.down("xs")]: {
-			width: "100px",
+			width: "10px",
 			wordWrap: "wrap",
 			lineHeight:"21px",
+			display:"none",
 		},
 	},
 	navBtns: {
