@@ -1,3 +1,4 @@
+import sizes from "./sizes";
 export default {
 	root: {
 		backgroundColor: "white",
@@ -6,12 +7,12 @@ export default {
 		padding: "0.5rem",
 		position: "relative",
 		overflow: "hidden",
-		marginBottom:"2px",
+		marginBottom: "2px",
 		"&:hover": {
 			cursor: "pointer",
 		},
 		"&:hover svg": {
-			width:"27px",
+			width: "27px",
 			cursor: "pointer",
 		},
 	},
@@ -23,17 +24,26 @@ export default {
 		width: "100%",
 		overflow: "hidden",
 		zIndex: "0",
-		
 	},
 	deleteIcon: {
-		width:"0",
+		[sizes.down("xs")]: {
+			width: "27px",
+		},
+		[sizes.down("md")]: {
+			width: "27px",
+		},
+		[sizes.down("lg")]: {
+			width: "27px",
+		},
+
+		width: "0",
 		zIndex: "29",
 		position: "absolute",
 		transition: "all 0.3s ease-in-out",
-		color:"white",
+		color: "white",
 		// border:"1px solid red",
-		background:"red",
-		borderRadius:"4px",
+		background: "red",
+		borderRadius: "4px",
 		// alignSelf: "flex-end",
 	},
 	title: {

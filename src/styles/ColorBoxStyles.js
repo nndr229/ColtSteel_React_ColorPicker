@@ -112,11 +112,12 @@ export default {
 		flexDirection: "column",
 		justifyContent: "center",
 		fontSize: "2.5rem",
-		transform: "scale(0.1)",
+		transform: "scale(0.0001)",
 		opacity: "0",
 		color: "white",
 	},
 	showCopyMessage: {
+		display:"flex",
 		opacity: "1",
 		transform: "scale(1)",
 		zIndex: "25",

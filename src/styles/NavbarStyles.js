@@ -7,9 +7,9 @@ export default {
 		height: "7vh",
 	},
 	logo: {
-		marginRight: "15px",
+		marginRight: "17px",
 		padding: "0 13px",
-		fontSize: "17px",
+		fontSize: "15px",
 		backgroundColor: "rgba(223, 223, 209, 0.4)",
 		height: "100%",
 		display: "flex",
@@ -17,10 +17,11 @@ export default {
 		"& a": {
 			textDecoration: "none",
 			color: "black",
+			fontWeight:"bold",
 		},
 		[sizes.down("xs")]: {
 			// display:"none",
-			lineHeight:"16.7px",
+			lineHeight:"14.7px",
 			width: "110px",
 			wordWrap: "wrap",
 		},
@@ -52,9 +53,9 @@ export default {
 		marginLeft: "auto",
 		marginRight: "10px",
 		[sizes.down("xs")]: {
-			width: "70px",
-			marginLeft: "auto",
-			marginRight: "40px",
+			width: "60px",
+			marginLeft: "1%",
+			marginRight: "13%",
 		},
 	},
 };

@@ -14,8 +14,7 @@ import { arrayMove } from "react-sortable-hoc";
 import PaletteFormNav from "./PaletteFormNav";
 
 import ColorPickerForm from "./ColorPickerForm";
-import styles from "./styles/NewPaletteFormStyles"
-
+import styles from "./styles/NewPaletteFormStyles";
 
 class NewPaletteForm extends Component {
 	static defaultProps = {
@@ -27,7 +26,7 @@ class NewPaletteForm extends Component {
 			open: false,
 			currentColor: "teal",
 			colors: this.props.palettes[0].colors,
-
+			randomColors: [],
 			newPaletteName: "",
 		};
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
@@ -49,21 +48,30 @@ class NewPaletteForm extends Component {
 	}
 
 	clearColors() {
-		this.setState({ colors: [] });
+		this.setState({ colors: [] ,randomColors:[]});
 	}
 
 	addRandomColor() {
 		const allColors = this.props.palettes.map((p) => p.colors).flat();
 		let rand = Math.floor(Math.random() * allColors.length);
-		const randomColor = allColors[rand];
-		this.setState({ colors: [...this.state.colors, randomColor] });
+		if (this.state.randomColors.some((colorInd) => colorInd === rand)) {
+			this.addRandomColor();
+		} else {
+			let randomColor = allColors[rand];
+			randomColor.color = randomColor.color.toUpperCase();
+			console.log(randomColor);
+			this.setState({
+				colors: [...this.state.colors, randomColor],
+				randomColors: [...this.state.randomColors,rand],
+			});
+		}
 	}
-	savePalette = (newPaletteName,emoji) => {
+	savePalette = (newPaletteName, emoji) => {
 		let newName = newPaletteName;
 		const newPalette = {
 			paletteName: newName,
 			id: newName.toLowerCase().replace(/ /g, "-"),
-			emoji:emoji,
+			emoji: emoji,
 			colors: this.state.colors,
 		};
 		this.props.savePalette(newPalette);
@@ -123,7 +131,9 @@ class NewPaletteForm extends Component {
 					</div>
 					<Divider />
 					<div className={classes.container}>
-						<Typography variant='h4' gutterBottom>Design Your Palette</Typography>
+						<Typography variant='h4' gutterBottom>
+							Design Your Palette
+						</Typography>
 						<div className={classes.buttons}>
 							<Button
 								variant='contained'
@@ -155,7 +165,7 @@ class NewPaletteForm extends Component {
 				>
 					<div className={classes.drawerHeader} />
 					<DraggableColorList
-						open ={this.state.open}
+						open={this.state.open}
 						colors={this.state.colors}
 						removeColor={this.removeColor}
 						axis='xy'
