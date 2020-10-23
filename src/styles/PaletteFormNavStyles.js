@@ -1,14 +1,13 @@
 import { DRAWER_WIDTH } from "../constants";
-import sizes from "./sizes"
-const drawerWidth = DRAWER_WIDTH
-
+import sizes from "./sizes";
+const drawerWidth = DRAWER_WIDTH;
 
 export default (theme) => ({
 	root: {
 		display: "flex",
 		[sizes.down("xs")]: {
 			width: "100hw",
-		}
+		},
 	},
 	hide: {
 		display: "none",
@@ -20,10 +19,10 @@ export default (theme) => ({
 		}),
 		flexDirection: "row",
 		justifyContent: "space-between",
-		height: "65px",
+		height: "64.8px",
 	},
 	appBarShift: {
-		width: `calc(100% - ${drawerWidth}px)`,
+		width: `calc(100% - ${drawerWidth}px +2px)`,
 		marginLeft: drawerWidth,
 		transition: theme.transitions.create(["margin", "width"], {
 			easing: theme.transitions.easing.easeOut,
@@ -33,13 +32,15 @@ export default (theme) => ({
 	menuButton: {
 		marginRight: theme.spacing(2),
 	},
-	navHeaderText:{
+	navHeaderText: {
 		[sizes.down("xs")]: {
-		
-			display:"none",
+			display: "none",
 		},
 	},
 	navBtns: {
+		[sizes.down("xs")]: {
+			display: (props) => (props.open ? "none" : "flex"),
+		},
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",

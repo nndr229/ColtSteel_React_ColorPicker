@@ -1,6 +1,11 @@
 import { DRAWER_WIDTH } from "../constants";
-const drawerWidth = DRAWER_WIDTH
+import sizes from "./sizes";
 
+let drawerWidth = DRAWER_WIDTH
+
+if (sizes.down("xs") === "@media (max-width: 576px)"){
+	drawerWidth = 350;
+}
 export default  (theme) => ({
 	root: {
 		display: "flex",

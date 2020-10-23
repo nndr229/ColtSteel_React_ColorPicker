@@ -54,7 +54,7 @@ export default {
 		marginRight: "10px",
 		[sizes.down("xs")]: {
 			width: "60px",
-			marginLeft: "1%",
+			marginLeft: "auto",
 			marginRight: "13%",
 		},
 	},
