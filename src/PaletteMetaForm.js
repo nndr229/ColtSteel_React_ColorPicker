@@ -8,12 +8,19 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
+// import Button from "@material-ui/core/Button";
+// import Dialog from "@material-ui/core/Dialog";
+// import DialogActions from "@material-ui/core/DialogActions";
+// import DialogContent from "@material-ui/core/DialogContent";
+// import DialogContentText from "@material-ui/core/DialogContentText";
+// import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 
 class PaletteMetaForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			dialogOpen: false,
 			open: false,
 			newPaletteName: "",
 			emoji: null,
@@ -21,8 +28,23 @@ class PaletteMetaForm extends Component {
 			isEnable: false,
 		};
 	}
+	handleDialogOpen = () => {
+		this.setState({ dialogOpen: true });
+	};
+
+	handleDialogClose = () => {
+		this.setState({ dialogOpen: false });
+	};
+	Transition = React.forwardRef(function Transition(props, ref) {
+		return <Slide direction='up' ref={ref} {...props} />;
+	});
+
 	handleClickOpen = () => {
-		this.setState({ open: true });
+		if (this.props.colors.length < 10) {
+			this.handleDialogOpen();
+		} else {
+			this.setState({ open: true });
+		}
 	};
 
 	handleChange = (e) => {
@@ -34,8 +56,8 @@ class PaletteMetaForm extends Component {
 			(palette) =>
 				palette.paletteName.toLowerCase() !==
 				e.target.value.toLowerCase().trim()
-        );
-        console.log(isEnable)
+		);
+		console.log(isEnable);
 		isEnable
 			? this.setState({ isEnable: true })
 			: this.setState({ isEnable: false });
@@ -47,11 +69,12 @@ class PaletteMetaForm extends Component {
 	showEmojiPicker = (e) => {
 		this.setState({ showEmojiPicker: true });
 	};
-	
+
 	componentDidMount() {
 		ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
 			return this.props.palettes.every(
-				(palette) => palette.paletteName.toLowerCase() !== value.toLowerCase().trim()
+				(palette) =>
+					palette.paletteName.toLowerCase() !== value.toLowerCase().trim()
 			);
 		});
 	}
@@ -60,7 +83,7 @@ class PaletteMetaForm extends Component {
 		this.setState({ showEmojiPicker: false });
 	};
 	render() {
-		const { open } = this.state;
+		const { open, dialogOpen } = this.state;
 		return (
 			<div>
 				<Button
@@ -72,6 +95,39 @@ class PaletteMetaForm extends Component {
 				>
 					Save Palette
 				</Button>
+
+				<Dialog
+					open={dialogOpen}
+					TransitionComponent={this.Transition}
+					keepMounted
+					onClose={this.handleDialogClose}
+					aria-labelledby='alert-dialog-slide-title'
+					aria-describedby='alert-dialog-slide-description'
+				>
+					<DialogTitle id='alert-dialog-slide-title' align='center'>
+						You need atleast 10 colors!
+					</DialogTitle>
+					<DialogActions>
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								width: "100%",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<Button
+								variant='contained'
+								onClick={this.handleDialogClose}
+								color='primary'
+							>
+								Go Back
+							</Button>
+						</div>
+					</DialogActions>
+				</Dialog>
+
 				<Dialog
 					open={open}
 					onClose={this.handleClose}
@@ -136,7 +192,11 @@ class PaletteMetaForm extends Component {
 									color='primary'
 									onClick={this.showEmojiPicker}
 									variant='contained'
-									disabled={this.state.isEnable && this.state.newPaletteName.length>0 ?false:true}
+									disabled={
+										this.state.isEnable && this.state.newPaletteName.length > 0
+											? false
+											: true
+									}
 								>
 									Choose Emoji
 								</Button>

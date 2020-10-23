@@ -6,15 +6,13 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-
 import Button from "@material-ui/core/Button";
 import DraggableColorList from "./DraggableColorList";
-
 import { arrayMove } from "react-sortable-hoc";
 import PaletteFormNav from "./PaletteFormNav";
-
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteFormStyles";
+
 
 class NewPaletteForm extends Component {
 	static defaultProps = {
@@ -23,6 +21,7 @@ class NewPaletteForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			dialogOpen:false,
 			open: false,
 			currentColor: "teal",
 			colors: this.props.palettes[0].colors,
@@ -38,7 +37,7 @@ class NewPaletteForm extends Component {
 		this.clearColors = this.clearColors.bind(this);
 		this.addRandomColor = this.addRandomColor.bind(this);
 	}
-
+	
 	handleDrawerOpen() {
 		this.setState({ open: true });
 	}
@@ -48,7 +47,7 @@ class NewPaletteForm extends Component {
 	}
 
 	clearColors() {
-		this.setState({ colors: [] ,randomColors:[]});
+		this.setState({ colors: [], randomColors: [] });
 	}
 
 	addRandomColor() {
@@ -62,20 +61,22 @@ class NewPaletteForm extends Component {
 			console.log(randomColor);
 			this.setState({
 				colors: [...this.state.colors, randomColor],
-				randomColors: [...this.state.randomColors,rand],
+				randomColors: [...this.state.randomColors, rand],
 			});
 		}
 	}
 	savePalette = (newPaletteName, emoji) => {
-		let newName = newPaletteName;
-		const newPalette = {
-			paletteName: newName,
-			id: newName.toLowerCase().replace(/ /g, "-"),
-			emoji: emoji,
-			colors: this.state.colors,
-		};
-		this.props.savePalette(newPalette);
-		this.props.history.push("/");
+	
+			let newName = newPaletteName;
+			const newPalette = {
+				paletteName: newName,
+				id: newName.toLowerCase().replace(/ /g, "-"),
+				emoji: emoji,
+				colors: this.state.colors,
+			};
+			this.props.savePalette(newPalette);
+			this.props.history.push("/");
+		
 	};
 
 	addNewColor(colorName, colorValue) {
@@ -106,15 +107,18 @@ class NewPaletteForm extends Component {
 	};
 	render() {
 		const { classes, maxColors, palettes } = this.props;
-		const { open, colors } = this.state;
+		const { open, colors, dialogOpen } = this.state;
 		return (
 			<div className={classes.root}>
 				<PaletteFormNav
+					colors = {colors}
+					dialogOpen={dialogOpen}
 					open={open}
 					palettes={palettes}
 					handleDrawerOpen={this.handleDrawerOpen}
 					savePalette={this.savePalette}
 				/>
+				
 				<Drawer
 					className={classes.drawer}
 					variant='persistent'

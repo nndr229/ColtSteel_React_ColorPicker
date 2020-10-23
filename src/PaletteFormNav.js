@@ -46,6 +46,8 @@ class PaletteFormNav extends Component {
 					</Toolbar>
 					<div className={classes.navBtns}>
 						<PaletteMetaForm
+							colors={this.props.colors}
+							dialogOpen={this.props.dialogOpen}
 							savePalette={savePalette}
 							palettes={this.props.palettes}
 						/>
