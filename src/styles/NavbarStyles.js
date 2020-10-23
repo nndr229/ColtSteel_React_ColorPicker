@@ -20,6 +20,7 @@ export default {
 		},
 		[sizes.down("xs")]: {
 			// display:"none",
+			lineHeight:"16.7px",
 			width: "110px",
 			wordWrap: "wrap",
 		},

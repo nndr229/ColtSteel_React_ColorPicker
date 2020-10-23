@@ -6,6 +6,9 @@ const drawerWidth = DRAWER_WIDTH
 export default (theme) => ({
 	root: {
 		display: "flex",
+		[sizes.down("xs")]: {
+			width: "100hw",
+		}
 	},
 	hide: {
 		display: "none",
@@ -32,9 +35,7 @@ export default (theme) => ({
 	},
 	navHeaderText:{
 		[sizes.down("xs")]: {
-			width: "10px",
-			wordWrap: "wrap",
-			lineHeight:"21px",
+		
 			display:"none",
 		},
 	},

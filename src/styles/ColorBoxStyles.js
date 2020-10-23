@@ -23,7 +23,6 @@ export default {
 			width: "100%",
 			height: (props) => (props.showingFullPalette ? "8%" : "15%"),
 		},
-
 	},
 	colorBoxName: {
 		color: (props) =>
@@ -65,6 +64,17 @@ export default {
 		textTransform: "uppercase",
 		border: "none",
 		opacity: "0",
+		[sizes.down("xs")]: {
+			opacity: "0.6",
+			width: "50px",
+			marginLeft: "-25px",
+		},
+		[sizes.down("md")]: {
+			opacity: "0.6",
+		},
+		[sizes.down("lg")]: {
+			opacity: "0.6",
+		},
 	},
 	boxContent: {
 		position: "absolute",
@@ -121,9 +131,9 @@ export default {
 			textShadow: "1px 2px black",
 			background: "rgba(255, 255, 255, 0.2)",
 			textTransform: "uppercase",
-			[sizes.down("xs")]: {
-				fontSize: "5rem",
-			},
+			// [sizes.down("xs")]: {
+			// 	fontSize: "5rem",
+			// },
 		},
 		"& p": {
 			color: (props) =>

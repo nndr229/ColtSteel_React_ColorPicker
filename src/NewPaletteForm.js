@@ -155,6 +155,7 @@ class NewPaletteForm extends Component {
 				>
 					<div className={classes.drawerHeader} />
 					<DraggableColorList
+						open ={this.state.open}
 						colors={this.state.colors}
 						removeColor={this.removeColor}
 						axis='xy'

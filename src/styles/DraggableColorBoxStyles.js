@@ -17,7 +17,7 @@ export default {
 		},
 		[sizes.down("xs")]: {
 			width: "100%",
-			height:"10%",
+			height: "10%",
 		},
 		"&:hover svg": {
 			color: (props) =>
@@ -45,6 +45,9 @@ export default {
 		color: (props) =>
 			chroma(props.color).luminance() <= 0.5 ? "white" : "black",
 		wordBreak: "break-all",
+		[sizes.down("xs")]: {
+			display: (props)=> props.open ?"none":"",
+		},
 		// width: "80%",
 		fontWeight: "bold",
 		fontSize: "11px",
