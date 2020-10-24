@@ -8,12 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-// import Button from "@material-ui/core/Button";
-// import Dialog from "@material-ui/core/Dialog";
-// import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContent from "@material-ui/core/DialogContent";
-// import DialogContentText from "@material-ui/core/DialogContentText";
-// import DialogTitle from "@material-ui/core/DialogTitle";
+
 import Slide from "@material-ui/core/Slide";
 
 class PaletteMetaForm extends Component {
@@ -40,7 +35,7 @@ class PaletteMetaForm extends Component {
 	});
 
 	handleClickOpen = () => {
-		if (this.props.colors.length < 10) {
+		if (this.props.colors.length < 15) {
 			this.handleDialogOpen();
 		} else {
 			this.setState({ open: true });
@@ -105,7 +100,7 @@ class PaletteMetaForm extends Component {
 					aria-describedby='alert-dialog-slide-description'
 				>
 					<DialogTitle id='alert-dialog-slide-title' align='center'>
-						You need atleast 10 colors!
+						You need atleast 15 colors!
 					</DialogTitle>
 					<DialogActions>
 						<div
@@ -213,7 +208,6 @@ class PaletteMetaForm extends Component {
 								style={{
 									display: this.state.showEmojiPicker ? "flex" : "none",
 									zIndex: "10",
-									display: "flex",
 									flexDirection: "row",
 									width: this.state.showEmojiPicker ? "100%" : "0px",
 									justifyContent: "space-evenly",
@@ -224,6 +218,7 @@ class PaletteMetaForm extends Component {
 										display: this.state.showEmojiPicker ? "flex" : "none",
 									}}
 									type='submit'
+									onClick={() => this.handleClose()}
 									color='primary'
 									variant='contained'
 								>

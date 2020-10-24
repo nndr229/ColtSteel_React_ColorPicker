@@ -4,10 +4,12 @@ export default {
 		backgroundColor: "white",
 		borderRadius: "5px",
 		border: "1px solid black",
+	
 		padding: "0.5rem",
 		position: "relative",
 		overflow: "hidden",
-		marginBottom: "2px",
+
+		marginBottom: "3px",
 		"&:hover": {
 			cursor: "pointer",
 		},
@@ -20,10 +22,13 @@ export default {
 	colors: {
 		backgroundColor: "#dae1e4",
 		borderRadius: "5px",
-		height: "130px",
+		height: "100%",
+		maxHeight: "100%",
+		// marginBottom:"-5px",
 		width: "100%",
 		overflow: "hidden",
-		zIndex: "0",
+		zIndex: "1",
+		// marginBottom:"5px",
 	},
 	deleteIcon: {
 		[sizes.down("xs")]: {
@@ -59,11 +64,13 @@ export default {
 
 	emoji: { marginLeft: "0.5rem", fontSize: "1.5rem" },
 	miniColor: {
-		height: "25%",
+		height: "33px",
+		// maxHeight: "29%",
 		width: "20%",
 		display: "inline-block",
 		margin: "0 auto",
 		position: "relative",
-		marginBottom: "-4.4px",
+		marginBottom: "-5.7px",
+		maxHeight: "25%",
 	},
 };

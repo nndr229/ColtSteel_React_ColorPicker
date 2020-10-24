@@ -40,6 +40,7 @@ class ColorPickerForm extends Component {
 					className={classes.picker}
 				/>
 				<ValidatorForm
+					instantValidate={false}
 					onSubmit={() => {
 						return [
 							addNewColor(this.state.newColorName, this.state.currentColor),

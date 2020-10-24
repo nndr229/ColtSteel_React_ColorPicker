@@ -29,7 +29,7 @@ export default  {
 		height: '50%',
 		margin: '0 auto',
 		display: 'inline-block',
-		position: 'relative',
+	
 		marginBottom: '-4.5px',
 		"& a":{
 			cursor: 'pointer',

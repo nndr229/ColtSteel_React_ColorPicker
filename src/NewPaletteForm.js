@@ -12,7 +12,8 @@ import { arrayMove } from "react-sortable-hoc";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteFormStyles";
-
+import "./seedColors"
+import seedColors from "./seedColors";
 
 class NewPaletteForm extends Component {
 	static defaultProps = {
@@ -24,7 +25,7 @@ class NewPaletteForm extends Component {
 			dialogOpen:false,
 			open: false,
 			currentColor: "teal",
-			colors: this.props.palettes[0].colors,
+			colors: seedColors[0].colors,
 			randomColors: [],
 			newPaletteName: "",
 		};
@@ -87,6 +88,8 @@ class NewPaletteForm extends Component {
 		this.setState((st) => ({
 			colors: [...st.colors, color],
 			newColorName: "",
+	
+
 		}));
 	}
 
