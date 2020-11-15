@@ -1,23 +1,26 @@
 import sizes from "./sizes";
 import bg from "./bg.svg";
-export default {
-
-	dialogTitle: {
-		
+const styles = {
+	"@global": {
+		".fade-exit": {
+			opacity: 1,
+		},
+		".fade-exit-active": {
+			opacity: 0,
+			transition: "opacity 500ms ease-out",
+		},
 	},
 	root: {
 		overflowY: "scroll",
 		//background by SVGBackgrounds.com
-		height:"100vh",
+		height: "100vh",
 		backgroundColor: "#20aaa3",
 		backgroundImage: `url(${bg})`,
 		display: "flex",
 		alignItems: "flex-start",
 		justifyContent: "center",
-	
 	},
 	container: {
-
 		width: "60%",
 		display: "flex",
 		alignItems: "flex-start",
@@ -45,7 +48,6 @@ export default {
 			[sizes.down("home_xs")]: {
 				transform: "none",
 				textDecoration: "none",
-			
 			},
 			transform: "scale(1.3)",
 			textDecoration: "underline",
@@ -85,3 +87,5 @@ export default {
 		},
 	},
 };
+
+export default styles;

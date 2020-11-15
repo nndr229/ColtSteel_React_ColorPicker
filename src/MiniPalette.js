@@ -23,22 +23,18 @@ class MiniPalette extends PureComponent {
 			></div>
 		));
 		return (
-		
-				<div className={classes.root} onClick={handleClick}>
-					<DeleteIcon
-						style={{ top: "9", right: "8" }}
-						className={classes.deleteIcon}
-						onClick={(e) => handleDeleteClick(e, id)}
-					/>
-					<div className={classes.wrapper}>
-					<div className={classes.colors}>{miniColorBoxes} </div>
-					</div>
-					<h5 className={classes.title}>
-						{paletteName}
-						<span className={classes.emoji}>{emoji}</span>
-					</h5>
-				</div>
-			
+			<div className={classes.root} onClick={handleClick}>
+				<DeleteIcon
+					style={{ top: "9", right: "8" }}
+					className={classes.deleteIcon}
+					onClick={(e) => handleDeleteClick(e, id)}
+				/>
+				<div className={classes.colors}>{miniColorBoxes} </div>
+				<h5 className={classes.title}>
+					{paletteName}
+					<span className={classes.emoji}>{emoji}</span>
+				</h5>
+			</div>
 		);
 	}
 }

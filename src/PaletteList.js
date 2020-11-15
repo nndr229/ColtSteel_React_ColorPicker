@@ -61,10 +61,7 @@ class PaletteList extends Component {
 						aria-labelledby='alert-dialog-slide-title'
 						aria-describedby='alert-dialog-slide-description'
 					>
-						<DialogTitle
-							id='alert-dialog-slide-title'
-							align="center"
-						>
+						<DialogTitle id='alert-dialog-slide-title' align='center'>
 							Are You Sure?
 						</DialogTitle>
 						<DialogActions>
@@ -88,7 +85,7 @@ class PaletteList extends Component {
 					<TransitionGroup className={classes.palettes}>
 						{palettes.map((palette) => {
 							return (
-								<CSSTransition key={palette.id} classNames='fade' timeout={600}>
+								<CSSTransition key={palette.id} classNames='fade' timeout={500}>
 									<MiniPalette
 										{...palette}
 										handleDeleteClick={this.handleDeleteClick}

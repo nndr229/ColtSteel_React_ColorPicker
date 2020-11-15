@@ -20,10 +20,10 @@ export default {
 	},
 
 	colors: {
-		backgroundColor: "#dae1e4",
+		backgroundColor: "#dae2e1",
 		borderRadius: "5px",
-		height: "100%",
-		maxHeight: "100%",
+		height: "125px",
+		maxHeight: "125px",
 		// marginBottom:"-5px",
 		width: "100%",
 		overflow: "hidden",
@@ -64,13 +64,13 @@ export default {
 
 	emoji: { marginLeft: "0.5rem", fontSize: "1.5rem" },
 	miniColor: {
-		height: "33px",
+		height: "2.02rem",
 		// maxHeight: "29%",
 		width: "20%",
 		display: "inline-block",
 		margin: "0 auto",
 		position: "relative",
 		marginBottom: "-5.7px",
-		maxHeight: "25%",
+		// maxHeight: "25%",
 	},
 };
